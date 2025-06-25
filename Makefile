@@ -11,7 +11,7 @@ dev-frontend:
 dev-backend:
 	air
 
-dev-all:
+dev:
 	make dev-backend & make dev-frontend
 
 build:
