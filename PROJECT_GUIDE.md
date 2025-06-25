@@ -61,16 +61,7 @@ Hako/
 - [ ] Protected routes
 - [ ] Multi-family support
 
-### Phase 3: Media Storage Module
-- [ ] File upload API (photos, videos, documents)
-- [ ] File storage system (local/cloud)
-- [ ] Folder organization (custom sections: kids photos, travel, etc.)
-- [ ] Bulk photo import script (from local folders)
-- [ ] Media gallery interface with folder views
-- [ ] Search and filtering
-- [ ] Media preview/viewer
-
-### Phase 4: Expense Tracking Module
+### Phase 3: Expense Tracking Module
 - [ ] Expense/income entry forms
 - [ ] Category management with budget allocation
 - [ ] Data visualization (charts/graphs)
@@ -79,6 +70,15 @@ Hako/
 - [ ] Gamification system (achievements, savings goals)
 - [ ] Achievement system (monthly savings targets)
 - [ ] Export functionality
+
+### Phase 4: Media Storage Module
+- [ ] File upload API (photos, videos, documents)
+- [ ] File storage system (local/cloud)
+- [ ] Folder organization (custom sections: kids photos, travel, etc.)
+- [ ] Bulk photo import script (from local folders)
+- [ ] Media gallery interface with folder views
+- [ ] Search and filtering
+- [ ] Media preview/viewer
 
 ### Phase 5: Advanced Features
 - [ ] Push notifications
