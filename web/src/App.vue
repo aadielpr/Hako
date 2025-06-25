@@ -1,84 +1,54 @@
 <template>
     <div id="app">
-        <header>
-            <h1>Hako App</h1>
-        </header>
-        <main>
-            <div class="card">
-                <button @click="fetchData">{{ buttonText }}</button>
-                <p v-if="message">{{ message }}</p>
+        <nav class="bg-dark-900 border-b border-dark-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 sm:h-20">
+                    <div class="flex items-center">
+                        <router-link to="/">
+                            <img :src="logo" alt="Hako" class="h-12 sm:h-16 w-auto" />
+                        </router-link>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex overflow-x-auto hide-scrollbar -mx-2 sm:mx-0">
+                            <router-link 
+                                v-for="item in navItems" 
+                                :key="item.path"
+                                :to="item.path"
+                                class="text-dark-200 hover:text-white px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap"
+                                :class="{ 'text-white': $route.path === item.path }"
+                            >
+                                {{ item.name }}
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </nav>
+        
+        <main class="min-h-screen">
+            <router-view />
         </main>
     </div>
 </template>
 
-<script>
+<style>
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+</style>
+
+<script setup>
 import { ref } from 'vue';
+import logo from './assets/HakoSecondary.png';
 
-export default {
-    name: 'App',
-    setup() {
-        const message = ref('');
-        const buttonText = ref('Test API Connection');
-
-        async function fetchData() {
-            try {
-                const response = await fetch('/api/health');
-                const data = await response.json();
-                message.value = data.message;
-                buttonText.value = 'Connected ✓';
-            } catch (error) {
-                message.value = 'Failed to connect to API';
-                buttonText.value = 'Retry Connection';
-            }
-        }
-
-        return {
-            message,
-            buttonText,
-            fetchData,
-        };
-    },
-};
+const navItems = ref([
+    { name: 'Expenses', path: '/' },
+    { name: 'Categories', path: '/categories' },
+    { name: 'Budget', path: '/budget' },
+    { name: 'Achievements', path: '/achievements' }
+]);
 </script>
-
-<style scoped>
-#app {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-}
-
-.card {
-    padding: 2em;
-}
-
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    color: white;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-
-button:hover {
-    border-color: #646cff;
-}
-
-p {
-    margin-top: 1rem;
-    color: #888;
-}
-</style> 

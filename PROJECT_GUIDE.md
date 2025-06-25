@@ -1,4 +1,102 @@
-# Hako - Family Management App
+# Hako - Project Guide
+
+## Project Structure
+
+```
+Hako/
+  ├── cmd/
+  │   └── server/          # Main server entry point
+  ├── internal/
+  │   ├── handler/         # HTTP handlers
+  │   ├── middleware/      # HTTP middleware
+  │   ├── models/          # Data models
+  │   └── service/         # Business logic
+  └── web/                 # Frontend application
+      ├── src/
+      │   ├── assets/      # Static assets (images, etc)
+      │   ├── components/  # Vue components
+      │   ├── router/      # Vue router configuration
+      │   ├── utils/       # Utility functions
+      │   └── views/       # Vue views/pages
+      └── public/          # Public static files
+```
+
+## Current Progress
+
+### Backend (Go)
+- Basic server setup with Go
+- Health check endpoint
+- Project structure following clean architecture
+
+### Frontend (Vue.js)
+1. Core Setup
+   - Vue 3 with Vite
+   - TailwindCSS for styling
+   - Vue Router for navigation
+   - Dark theme implementation
+
+2. Components
+   - SummaryCards: Monthly income, expenses, and savings overview
+   - MonthlyChart: Bar chart showing financial overview
+   - ExpensesCategory: Pie chart for expense categories
+   - BudgetStatus: Budget tracking with circular progress
+   - ExpensesList: Recent transactions list
+
+3. Views
+   - Expenses: Main dashboard with financial overview
+   - Budget: Budget management (in progress)
+   - Categories: Expense categories (in progress)
+   - Achievements: Financial goals (planned)
+
+4. Features Implemented
+   - Responsive design for mobile and desktop
+   - Modern, minimalist UI with dark theme
+   - Interactive charts and visualizations
+   - Currency formatting for Indonesian Rupiah
+   - Component-based architecture for better maintainability
+
+## Next Steps
+1. Backend Development
+   - Database setup (PostgreSQL)
+   - User authentication
+   - CRUD operations for expenses
+   - File storage system
+
+2. Frontend Development
+   - Complete remaining views
+   - File upload and management
+   - User settings and preferences
+   - Family member management
+   - Document organization system
+
+3. Features Planned
+   - Document storage and organization
+   - Photo gallery
+   - Family records management
+   - Expense tracking and analysis
+   - Budget planning tools
+   - Family calendar integration
+
+## Development Guidelines
+
+### Code Style
+- Use spaces for indentation (4 spaces)
+- Follow language-specific conventions (camelCase for JS, snake_case for Python)
+- Minimize dev dependencies
+- Prefer clear function declarations
+- Keep code modular and maintainable
+
+### Component Structure
+- Split large components into smaller, reusable ones
+- Keep components focused on single responsibility
+- Use props for component communication
+- Maintain consistent styling across components
+
+### Git Workflow
+- Use meaningful commit messages
+- Create feature branches for new development
+- Review code before merging to main
+- Keep commits focused and atomic
 
 ## Project Overview
 
@@ -22,13 +120,13 @@ A personal family app for managing media files and tracking daily expenses. Buil
 
 ## Technical Stack
 
-- **Frontend**: Vue 3 + Vite + Pnpm
+- **Frontend**: Vue 3 + Vite + Pnpm + Tailwind CSS + Vue Router
 - **Backend**: Go + Echo Framework
 - **Database**: TBD (PostgreSQL/SQLite)
 - **File Storage**: Local filesystem or cloud storage
 - **Hot Reload**: Air for Go, Vite HMR for Vue
 - **UI Theme**: Dark theme (Vercel/X inspired, slightly brighter/silver)
-- **Design**: Mobile-first responsive design
+- **Design**: Mobile-first responsive design with Tailwind CSS
 
 ## Project Structure
 
@@ -41,6 +139,12 @@ Hako/
 │   ├── middleware/      # HTTP middleware
 │   └── models/          # Data models
 ├── web/                 # Vue 3 frontend
+│   ├── src/
+│   │   ├── components/  # Vue components
+│   │   ├── views/       # Page components
+│   │   ├── router/      # Vue Router configuration
+│   │   └── assets/      # Static assets
+│   └── tailwind.config.js
 ├── bin/                 # Build outputs
 └── migrations/          # Database migrations (future)
 ```

@@ -1,41 +1,97 @@
-# Hako App
+# Hako (箱) - Your Family's Digital Box
 
-Vue 3 + Golang Echo starter application.
+<p align="center">
+    <img src="web/src/assets/HakoSecondary.png" alt="Hako Logo" width="200" />
+</p>
 
-## Structure
+## About
 
+Hako (箱), meaning "Box" in Japanese, is a comprehensive family management application designed to be your family's digital storage box. Just like a traditional family box that stores important documents, photos, and memories in a safe place, Hako provides a secure digital space for managing your family's needs.
+
+## Features
+
+### Financial Management
+- Track monthly income and expenses
+- Visualize spending patterns
+- Set and monitor budgets
+- Achieve financial goals
+
+### Document Storage
+- Secure storage for important documents
+- Easy organization and retrieval
+- Support for multiple file types
+- Version history tracking
+
+### Photo Gallery
+- Store family photos
+- Organize by events or dates
+- Easy sharing between family members
+- Backup important memories
+
+### Family Records
+- Keep track of important dates
+- Store medical records
+- Manage family schedules
+- Document milestones
+
+## Tech Stack
+
+### Backend
+- Go
+- Clean Architecture
+- RESTful API
+
+### Frontend
+- Vue 3
+- Vite
+- TailwindCSS
+- Modern UI/UX
+
+## Getting Started
+
+### Prerequisites
+- Go 1.21+
+- Node.js 18+
+- pnpm
+
+### Installation
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/hako.git
+cd hako
 ```
-cmd/               # Main applications
-├── server/        # HTTP server
-internal/          # Private application code
-├── handler/       # HTTP handlers
-├── service/       # Business logic
-├── middleware/    # HTTP middleware
-└── dto/          # Data transfer objects
-web/              # Vue 3 frontend
-```
 
-## Development
-
-### Setup
+2. Install dependencies
 ```bash
 make install
 ```
 
 ### Development
 ```bash
-# Both frontend + backend with hot reload
-make dev-all
+# Run backend only (with hot reload)
+make dev-backend
 
-# Or separate:
-make dev-frontend    # Vue dev server (localhost:3000)
-make dev-backend     # Go server with Air hot reload (localhost:8080)
+# Run frontend only
+make dev-frontend
+
+# Run both frontend & backend
+make dev
 ```
 
-### Production Build & Run
+### Production
 ```bash
+# Build for production
 make build
+
+# Run production build
 make prod
 ```
 
-Single server on http://localhost:8080 serves both API and frontend. 
+### Other Commands
+```bash
+# Clean build artifacts
+make clean
+```
+
+## License
+MIT 
