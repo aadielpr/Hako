@@ -28,96 +28,25 @@
         <!-- Budget Status and Recent Expenses -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <BudgetStatus :budget-categories="budgetCategories" />
-            <ExpensesList :expenses="recentExpenses" />
-        </div>
-
-        <!-- Quick Add Modal -->
-        <div v-if="showAddExpense" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50" @click="showAddExpense = false">
-            <div class="bg-black border border-dark-800 rounded-2xl p-8 w-full max-w-md mx-4" @click.stop>
-                <h3 class="text-xl font-bold text-white text-center mb-6">Add Expense</h3>
-                <form @submit.prevent="addExpense" class="space-y-4">
-                    <div>
-                        <label class="block text-gray-400 text-sm mb-2">Description</label>
-                        <input 
-                            v-model="newExpense.description" 
-                            type="text" 
-                            required 
-                            class="input-field w-full"
-                        />
+            <RecentExpenses :expenses="recentExpenses" class="mt-6">
+                <template #header>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-medium">Recent Expenses</h3>
+                        <router-link to="/expenses/list" class="text-primary-500 hover:text-primary-400">View All</router-link>
                     </div>
-                    <div>
-                        <label class="block text-gray-400 text-sm mb-2">Amount</label>
-                        <input 
-                            v-model="newExpense.amount" 
-                            type="number" 
-                            step="0.01" 
-                            required 
-                            class="input-field w-full"
-                        />
-                    </div>
-                    <div>
-                        <label class="block text-gray-400 text-sm mb-2">Category</label>
-                        <select v-model="newExpense.category" required class="input-field w-full">
-                            <option value="">Select Category</option>
-                            <option v-for="cat in categories" :key="cat.id" :value="cat.id">
-                                {{ cat.name }}
-                            </option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-gray-400 text-sm mb-2">Type</label>
-                        <select v-model="newExpense.type" required class="input-field w-full">
-                            <option value="expense">Expense</option>
-                            <option value="income">Income</option>
-                        </select>
-                    </div>
-                    <div class="flex gap-4 pt-4">
-                        <button 
-                            type="button" 
-                            @click="showAddExpense = false"
-                            class="flex-1 py-3 bg-dark-800 text-white rounded-lg font-medium hover:bg-black/40 transition-colors"
-                        >
-                            Cancel
-                        </button>
-                        <button 
-                            type="submit"
-                            class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg font-medium hover:from-primary-600 hover:to-primary-700 transition-all transform hover:-translate-y-0.5"
-                        >
-                            Add
-                        </button>
-                    </div>
-                </form>
-            </div>
+                </template>
+            </RecentExpenses>
         </div>
     </div>
 </template>
 
-<style>
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-</style>
-
 <script setup>
 import { ref, computed } from 'vue';
-import { formatRupiah } from '../utils/currency';
 import SummaryCards from '../components/SummaryCards.vue';
 import ChartsSection from '../components/ChartsSection.vue';
 import BudgetStatus from '../components/BudgetStatus.vue';
-import ExpensesList from '../components/ExpensesList.vue';
+import RecentExpenses from '../components/RecentExpenses.vue';
 
-// Reactive state
-const showAddExpense = ref(false);
-const newExpense = ref({
-    description: '',
-    amount: '',
-    category: '',
-    type: 'expense'
-});
 
 // Mock data - will be replaced with API calls
 const monthlyIncome = ref(5000000);
@@ -204,11 +133,4 @@ const categories = ref([
     { id: 3, name: 'Entertainment' },
     { id: 4, name: 'Utilities' }
 ]);
-
-function addExpense() {
-    // TODO: API call to add expense
-    console.log('Adding expense:', newExpense.value);
-    showAddExpense.value = false;
-    newExpense.value = { description: '', amount: '', category: '', type: 'expense' };
-}
 </script> 

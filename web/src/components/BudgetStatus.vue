@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center mb-3">
             <h2 class="text-lg font-bold text-white">Budget Status</h2>
             <router-link 
-                to="/budget/list"
+                to="/budget"
                 class="text-xs text-gray-400 hover:text-white transition-colors"
             >
                 View All →
@@ -55,16 +55,6 @@
         </div>
     </section>
 </template>
-
-<style>
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-</style>
 
 <script setup>
 import { computed } from 'vue';

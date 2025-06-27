@@ -9,7 +9,7 @@
                         </router-link>
                     </div>
                     <div class="flex items-center">
-                        <div class="flex overflow-x-auto hide-scrollbar -mx-2 sm:mx-0">
+                        <div class="flex overflow-x-auto -mx-2 sm:mx-0">
                             <router-link 
                                 v-for="item in navItems" 
                                 :key="item.path"
@@ -31,15 +31,6 @@
     </div>
 </template>
 
-<style>
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-</style>
 
 <script setup>
 import { ref } from 'vue';

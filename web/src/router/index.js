@@ -1,37 +1,49 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Expenses from '../views/Expenses.vue';
-
-const routes = [
-    {
-        path: '/',
-        name: 'Expenses',
-        component: Expenses
-    },
-    {
-        path: '/categories',
-        name: 'Categories',
-        component: () => import('../views/Categories.vue')
-    },
-    {
-        path: '/budget',
-        name: 'Budget',
-        component: () => import('../views/Budget.vue')
-    },
-    {
-        path: '/budget/list',
-        name: 'BudgetList',
-        component: () => import('../views/BudgetList.vue')
-    },
-    {
-        path: '/achievements',
-        name: 'Achievements',
-        component: () => import('../views/Achievements.vue')
-    }
-];
+import ExpensesList from '../views/ExpensesList.vue';
+import AddExpense from '../views/AddExpense.vue';
+import Budget from '../views/Budget.vue';
+import Categories from '../views/Categories.vue';
+import Achievements from '../views/Achievements.vue';
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes: [
+        {
+            path: '/',
+            redirect: '/expenses'
+        },
+        {
+            path: '/expenses',
+            name: 'expenses',
+            component: Expenses
+        },
+        {
+            path: '/expenses/list',
+            name: 'expenses-list',
+            component: ExpensesList
+        },
+        {
+            path: '/expenses/add',
+            name: 'add-expense',
+            component: AddExpense
+        },
+        {
+            path: '/budget',
+            name: 'budget',
+            component: Budget
+        },
+        {
+            path: '/categories',
+            name: 'categories',
+            component: Categories
+        },
+        {
+            path: '/achievements',
+            name: 'achievements',
+            component: Achievements
+        }
+    ]
 });
 
 export default router; 

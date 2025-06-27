@@ -1,11 +1,14 @@
-<!-- ExpensesList.vue -->
+<!-- RecentExpenses.vue -->
 <template>
     <section class="mb-8">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-lg font-bold text-white">Recent Expenses</h2>
-            <button class="text-xs text-gray-400 hover:text-white transition-colors">
+            <router-link 
+                to="/expenses/list" 
+                class="text-xs text-gray-400 hover:text-white transition-colors"
+            >
                 View All →
-            </button>
+            </router-link>
         </div>
         <div class="space-y-4">
             <div 
