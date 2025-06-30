@@ -68,6 +68,7 @@ Hako/
    - User settings and preferences
    - Family member management
    - Document organization system
+   - Password manager interface
 
 3. Features Planned
    - Document storage and organization
@@ -76,6 +77,7 @@ Hako/
    - Expense tracking and analysis
    - Budget planning tools
    - Family calendar integration
+   - Password manager for family accounts
 
 ## Development Guidelines
 
@@ -100,7 +102,7 @@ Hako/
 
 ## Project Overview
 
-A personal family app for managing media files and tracking daily expenses. Built with Vue 3 frontend and Go Echo backend.
+A personal family app for managing media files, tracking daily expenses, and storing family passwords securely. Built with Vue 3 frontend and Go Echo backend.
 
 ## Core Features
 
@@ -118,12 +120,21 @@ A personal family app for managing media files and tracking daily expenses. Buil
 - **Reports**: Monthly/yearly financial summaries
 - **Budget Tracking**: Set and monitor budget limits
 
+### 🔐 Password Manager
+- **Secure Storage**: Encrypted storage for family passwords
+- **Categories**: Organize passwords by type (social media, banking, utilities, etc.)
+- **Password Generation**: Built-in strong password generator
+- **Search & Filter**: Easy search and filtering capabilities
+- **Export/Import**: Backup and restore password data
+- **Sharing**: Share passwords securely between family members
+
 ## Technical Stack
 
 - **Frontend**: Vue 3 + Vite + Pnpm + Tailwind CSS + Vue Router
 - **Backend**: Go + Echo Framework
 - **Database**: TBD (PostgreSQL/SQLite)
 - **File Storage**: Local filesystem or cloud storage
+- **Encryption**: AES-256 for password storage
 - **Hot Reload**: Air for Go, Vite HMR for Vue
 - **UI Theme**: Dark theme (Vercel/X inspired, slightly brighter/silver)
 - **Design**: Mobile-first responsive design with Tailwind CSS
@@ -175,7 +186,17 @@ Hako/
 - [ ] Achievement system (monthly savings targets)
 - [ ] Export functionality
 
-### Phase 4: Media Storage Module
+### Phase 4: Password Manager Module
+- [ ] Password entry forms with validation
+- [ ] Password categories (social media, banking, utilities, etc.)
+- [ ] Strong password generator
+- [ ] Search and filtering interface
+- [ ] Password strength indicator
+- [ ] Export/import functionality
+- [ ] Secure password sharing between family members
+- [ ] Password history and versioning
+
+### Phase 5: Media Storage Module
 - [ ] File upload API (photos, videos, documents)
 - [ ] File storage system (local/cloud)
 - [ ] Folder organization (custom sections: kids photos, travel, etc.)
@@ -184,7 +205,7 @@ Hako/
 - [ ] Search and filtering
 - [ ] Media preview/viewer
 
-### Phase 5: Advanced Features
+### Phase 6: Advanced Features
 - [ ] Push notifications
 - [ ] Data backup/restore
 - [ ] Multi-language support (if needed)
@@ -213,6 +234,12 @@ Hako/
 ### Budget Settings Table
 - id, family_id, category_id, monthly_limit, current_spent, month_year
 
+### Passwords Table
+- id, family_id, title, username, encrypted_password, url, category_id, notes, created_at, updated_at
+
+### Password Categories Table
+- id, family_id, name, color, icon, created_at
+
 ## API Endpoints (Planned)
 
 ### Authentication
@@ -237,6 +264,17 @@ Hako/
 - GET /api/achievements - Get user achievements
 - POST /api/achievements/check - Check and unlock achievements
 
+### Password Management
+- GET /api/passwords - List passwords
+- POST /api/passwords - Create password
+- PUT /api/passwords/:id - Update password
+- DELETE /api/passwords/:id - Delete password
+- GET /api/passwords/categories - List password categories
+- POST /api/passwords/categories - Create password category
+- GET /api/passwords/generate - Generate strong password
+- POST /api/passwords/export - Export passwords
+- POST /api/passwords/import - Import passwords
+
 ## Security Considerations
 
 - [ ] File type validation
@@ -246,6 +284,9 @@ Hako/
 - [ ] XSS protection
 - [ ] CSRF protection
 - [ ] Rate limiting
+- [ ] Password encryption (AES-256)
+- [ ] Secure password generation
+- [ ] Password strength validation
 
 ## Deployment Strategy
 
@@ -260,7 +301,8 @@ Hako/
 1. **For Wife**: Easy expense tracking with visual insights
 2. **For Family**: Secure media storage and sharing
 3. **For Me**: Learning Go and building something useful
-4. **Technical**: Clean code, good performance, maintainable
+4. **For Family Security**: Centralized password management
+5. **Technical**: Clean code, good performance, maintainable
 
 ## Scripts & Tools
 
@@ -288,6 +330,14 @@ go run scripts/import-media.go --source "/path/to/photos" --section "Kids Photos
 - Visual indicators (green/yellow/red) for budget status
 - Automatic achievement checking when budget goals met
 
+### Password Manager Features
+- **Categories**: Social Media, Banking, Utilities, Shopping, Work, Personal
+- **Password Generator**: Configurable length and character sets
+- **Strength Indicator**: Visual password strength meter
+- **Search**: Real-time search across titles, usernames, and URLs
+- **Export**: CSV/JSON export with encryption
+- **Import**: Bulk import from other password managers
+
 ## Design System
 
 ### Color Palette (Dark Theme)
@@ -312,4 +362,6 @@ go run scripts/import-media.go --source "/path/to/photos" --section "Kids Photos
 - Plan for future multi-family scalability
 - Manual family account creation (no public registration)
 - Gamification should motivate, not overwhelm
-- Dark theme throughout (inspired by Vercel/X but brighter) 
+- Dark theme throughout (inspired by Vercel/X but brighter)
+- Password security is critical - use strong encryption
+- Consider password sharing permissions within family 

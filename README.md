@@ -34,6 +34,13 @@ Hako (箱), meaning "Box" in Japanese, is a comprehensive family management appl
 - Manage family schedules
 - Document milestones
 
+### Password Manager
+- Secure storage for family passwords
+- Organize passwords by categories
+- Strong password generator
+- Easy search and filtering
+- Export and backup functionality
+
 ## Tech Stack
 
 ### Backend
