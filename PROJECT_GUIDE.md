@@ -4,13 +4,17 @@
 
 ```
 Hako/
-  ├── cmd/
-  │   └── server/          # Main server entry point
-  ├── internal/
-  │   ├── handler/         # HTTP handlers
-  │   ├── middleware/      # HTTP middleware
-  │   ├── models/          # Data models
-  │   └── service/         # Business logic
+  ├── backend/             # Go backend application
+  │   ├── cmd/
+  │   │   └── server/      # Main server entry point
+  │   ├── internal/
+  │   │   ├── handler/     # HTTP handlers
+  │   │   ├── middleware/  # HTTP middleware
+  │   │   ├── models/      # Data models
+  │   │   └── service/     # Business logic
+  │   ├── go.mod           # Go module file
+  │   ├── go.sum           # Go dependencies checksum
+  │   └── .air.toml        # Air hot reload configuration
   └── web/                 # Frontend application
       ├── src/
       │   ├── assets/      # Static assets (images, etc)
@@ -143,12 +147,16 @@ A personal family app for managing media files, tracking daily expenses, and sto
 
 ```
 Hako/
-├── cmd/server/          # Go server entry point
-├── internal/            # Private Go code
-│   ├── handler/         # HTTP handlers
-│   ├── service/         # Business logic
-│   ├── middleware/      # HTTP middleware
-│   └── models/          # Data models
+├── backend/             # Go backend application
+│   ├── cmd/server/      # Go server entry point
+│   ├── internal/        # Private Go code
+│   │   ├── handler/     # HTTP handlers
+│   │   ├── service/     # Business logic
+│   │   ├── middleware/  # HTTP middleware
+│   │   └── models/      # Data models
+│   ├── go.mod           # Go module file
+│   ├── go.sum           # Go dependencies checksum
+│   └── .air.toml        # Air hot reload configuration
 ├── web/                 # Vue 3 frontend
 │   ├── src/
 │   │   ├── components/  # Vue components

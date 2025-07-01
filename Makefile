@@ -2,14 +2,14 @@
 
 install:
 	cd web && pnpm install
-	go mod tidy
+	cd backend && go mod tidy
 	go install github.com/air-verse/air@latest
 
 dev-frontend:
 	cd web && pnpm dev
 
 dev-backend:
-	air
+	cd backend && air
 
 dev:
 	make dev-backend & make dev-frontend
@@ -17,7 +17,7 @@ dev:
 build:
 	mkdir -p bin
 	cd web && pnpm build --outDir ../bin/web --emptyOutDir
-	go build -o bin/hako cmd/server/main.go
+	cd backend && go build -o ../bin/hako cmd/server/main.go
 
 clean:
 	rm -rf bin

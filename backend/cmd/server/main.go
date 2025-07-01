@@ -12,7 +12,6 @@ func main() {
 	e := echo.New()
 
 	middleware.Setup(e)
-	setupStaticFiles(e)
 	setupRoutes(e)
 
 	log.Println("Starting server on :8080")
@@ -23,12 +22,4 @@ func setupRoutes(e *echo.Echo) {
 	api := e.Group("/api")
 
 	handler.RegisterHealthRoutes(api)
-}
-
-func setupStaticFiles(e *echo.Echo) {
-	e.Static("/assets", "bin/web/assets")
-	e.File("/", "bin/web/index.html")
-	e.GET("/*", func(c echo.Context) error {
-		return c.File("bin/web/index.html")
-	})
 }
